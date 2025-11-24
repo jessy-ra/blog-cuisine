@@ -1,129 +1,33 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+    header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
+    header nav ul { list-style-type: none; margin: 0; padding: 0; }
+    header nav ul li { display: inline; margin: 0 20px; }
+    header nav ul li a { color: white; text-decoration: none; font-size: 1.2em; }
+    header nav ul li a:hover { color: #ffd700; }
 
-/* Styles globaux */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
+    .content-section { display: none; padding: 20px; }
+    #accueil { display: block; background-color: #fdf6e3; text-align: center; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    #accueil h1 { color: #4caf50; }
+    .welcome-image { width: 80%; max-width: 800px; margin-top: 20px; border-radius: 8px; }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-}
+    #recettes { background-color: #fff3e0; }
+    .categorie { margin-bottom: 40px; padding: 20px; border-radius: 10px; }
+    .categorie h3 { font-size: 1.6em; color: #333; margin-bottom: 10px; }
 
-header nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+    .recipe { display: inline-block; width: 300px; margin: 10px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+    .recipe img { width: 100%; height: 200px; object-fit: cover; }
+    .recipe h4 { margin: 10px 0; color: #333; }
+    .recipe a { text-decoration: none; color: #ff7043; font-weight: bold; }
+    .recipe p { font-size: 0.9em; color: #666; padding: 0 10px 10px; }
+    .recipe:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
 
-header nav ul li {
-    display: inline;
-    margin: 0 20px;
-}
+    footer { text-align: center; padding: 20px; background-color: #333; color: white; }
+    footer a { color: #ffd700; text-decoration: none; }
 
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2em;
-}
+    .search-input { display: block; width: 80%; max-width: 400px; margin: 20px auto; padding: 10px; font-size: 1em; border-radius: 8px; border: 1px solid #ccc; }
 
-header nav ul li a:hover {
-    color: #ffd700;
-}
-
-/* Sections du site */
-.content-section {
-    display: none;
-    padding: 20px;
-}
-
-#accueil {
-    display: block;
-    background-color: #fdf6e3;
-    text-align: center;
-}
-
-#accueil h1 {
-    color: #4caf50;
-}
-
-.welcome-image {
-    width: 80%;
-    max-width: 800px;
-    margin-top: 20px;
-    border-radius: 8px;
-}
-
-#recettes {
-    background-color: #fff3e0;
-}
-
-.categorie {
-    margin-bottom: 40px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.categorie h3 {
-    font-size: 1.6em;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.recipe {
-    display: inline-block;
-    width: 300px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.recipe img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.recipe h4 {
-    margin: 10px 0;
-    color: #333;
-}
-
-.recipe a {
-    text-decoration: none;
-    color: #ff7043;
-    font-weight: bold;
-}
-
-.recipe p {
-    font-size: 0.9em;
-    color: #666;
-    padding: 0 10px 10px;
-}
-
-.recipe:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333;
-    color: white;
-}
-
-footer a {
-    color: #ffd700;
-    text-decoration: none;
-}
+    #detailRecette h2 { font-size: 2em; margin-bottom: 15px; color: #ba68c8; text-align: center; }
+    #detailRecette img { width: 40%; max-width: 300px; display: block; margin: 0 auto 20px auto; border-radius: 10px; }
+    #detailRecette p { font-size: 1.2em; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #333; }
+    #detailRecette button { display: block; margin: 20px auto; padding: 10px 20px; font-size: 1em; background-color: #ba68c8; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    #detailRecette button:hover { background-color: #9c27b0; }
