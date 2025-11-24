@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog de Cuisine</title>
+<style>
+    /* Styles globaux */
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+    header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
+    header nav ul { list-style-type: none; margin: 0; padding: 0; }
+    header nav ul li { display: inline; margin: 0 20px; }
+    header nav ul li a { color: white; text-decoration: none; font-size: 1.2em; }
+    header nav ul li a:hover { color: #ffd700; }
+
+    .content-section { display: none; padding: 20px; }
+    #accueil { display: block; background-color: #fdf6e3; text-align: center; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    #accueil h1 { color: #4caf50; }
+    .welcome-image { width: 80%; max-width: 800px; margin-top: 20px; border-radius: 8px; }
+
+    #recettes { background-color: #fff3e0; }
+    .categorie { margin-bottom: 40px; padding: 20px; border-radius: 10px; }
+    .categorie h3 { font-size: 1.6em; color: #333; margin-bottom: 10px; }
+
+    .recipe { display: inline-block; width: 300px; margin: 10px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); overflow: hidden; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+    .recipe img { width: 100%; height: 200px; object-fit: cover; }
+    .recipe h4 { margin: 10px 0; color: #333; }
+    .recipe a { text-decoration: none; color: #ff7043; font-weight: bold; }
+    .recipe p { font-size: 0.9em; color: #666; padding: 0 10px 10px; }
+    .recipe:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+
+    footer { text-align: center; padding: 20px; background-color: #333; color: white; }
+    footer a { color: #ffd700; text-decoration: none; }
+
+    .search-input { display: block; width: 80%; max-width: 400px; margin: 20px auto; padding: 10px; font-size: 1em; border-radius: 8px; border: 1px solid #ccc; }
+
+    #detailRecette h2 { font-size: 2em; margin-bottom: 15px; color: #ba68c8; text-align: center; }
+    #detailRecette img { width: 40%; max-width: 300px; display: block; margin: 0 auto 20px auto; border-radius: 10px; }
+    #detailRecette p { font-size: 1.2em; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #333; }
+    #detailRecette button { display: block; margin: 20px auto; padding: 10px 20px; font-size: 1em; background-color: #ba68c8; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    #detailRecette button:hover { background-color: #9c27b0; }
+</style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showSection('accueil')">Accueil</a></li>
+            <li><a href="#" onclick="showSection('recettes')">Recettes</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="accueil" class="content-section">
+    <h1>Bienvenue sur mon Blog de Cuisine !</h1>
+    <p>
+        Bienvenue dans mon univers culinaire ! Ici, vous trouverez des recettes délicieuses, faciles à réaliser et adaptées à tous les niveaux.
+        Que vous aimiez la cuisine française traditionnelle, les saveurs méditerranéennes ou les plats exotiques d’Asie, il y a de quoi ravir vos papilles.
+        Prenez votre tablier et laissez-vous inspirer par des idées savoureuses et colorées pour chaque repas !
+    </p>
+    <img src="https://img-3.journaldesfemmes.fr/0KiguZexaAeQ05GoqQAnZTqjgGk=/1240x/smart/f553f2ad508b4956b814ff8872c3b015/ccmcms-jdf/39963669.jpg" alt="Cuisine" class="welcome-image">
+</section>
+
+<section id="recettes" class="content-section" style="display:none;">
+    <h2>Nos Recettes</h2>
+    <input type="text" id="searchBar" placeholder="Rechercher une recette..." onkeyup="searchRecipe()" class="search-input">
+
+    <!-- Catégorie Cuisine Française -->
+    <div class="categorie" style="background-color: #FFEBEE;">
+        <h3>Cuisine Française</h3>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://unjouruneepice.com/modules/ph_simpleblog/featured/45.jpg" alt="Ratatouille">
+            <h4><a href="#">Ratatouille</a></h4>
+            <p>Plat provençal végétarien aux légumes frais de saison.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 2 aubergines, 2 courgettes, 1 poivron rouge, 1 poivron jaune, 3 tomates, 1 oignon, 2 gousses d'ail, 3 c. à soupe d'huile d'olive, herbes de Provence, sel et poivre.<br><br>
+                <strong>Préparation :</strong> Couper tous les légumes en dés. Faire revenir l'oignon et l'ail dans l'huile d'olive 5 min. Ajouter les légumes et laisser mijoter 30 min à feu doux. Assaisonner selon votre goût.<br><br>
+                <strong>Temps :</strong> Préparation 15 min, cuisson 30 min, total 45 min.<br><br>
+                <strong>Conseils :</strong> Servir chaud, accompagner de pain frais. Ajouter du basilic ou parmesan pour plus de saveur.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://assets.afcdn.com/recipe/20221010/135915_w600.jpg" alt="Quiche Lorraine">
+            <h4><a href="#">Quiche Lorraine</a></h4>
+            <p>Quiche savoureuse avec du lard, des œufs et de la crème fraîche.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 1 pâte brisée, 200g de lardons, 3 œufs, 20 cl de crème fraîche, sel, poivre.<br><br>
+                <strong>Préparation :</strong> Préchauffer le four à 180°C. Étaler la pâte dans un moule. Battre les œufs avec la crème, ajouter les lardons. Verser sur la pâte et cuire 35 min.<br><br>
+                <strong>Temps :</strong> Préparation 10 min, cuisson 35 min, total 45 min.<br><br>
+                <strong>Conseils :</strong> Servir chaud avec une salade verte.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://mrcuisto.com/assets/images/1756638586813-vfnc86ba.jpg" alt="Boeuf Bourguignon">
+            <h4><a href="#">Boeuf Bourguignon</a></h4>
+            <p>Plat mijoté dans du vin rouge.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 1 kg de bœuf, 200 g de lardons, 2 carottes, 2 oignons, 50 cl de vin rouge, sel, poivre, thym, laurier.<br><br>
+                <strong>Préparation :</strong> Couper la viande et les légumes. Faire revenir la viande et les lardons, ajouter les légumes et le vin. Laisser mijoter 3h.<br><br>
+                <strong>Temps :</strong> Préparation 20 min, cuisson 3h, total 3h20.<br><br>
+                <strong>Conseils :</strong> Servir avec des pommes de terre ou du riz.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://images.getrecipekit.com/20220316211706-now-20open-20-81.png?aspect_ratio=16:9&quality=90" alt="Soupe à l'oignon">
+            <h4><a href="#">Soupe à l'oignon</a></h4>
+            <p>Soupe réconfortante aux oignons caramélisés, gratinée au fromage.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 6 gros oignons, 50 g de beurre, 2 c. à soupe d'huile d'olive, 1 L de bouillon de bœuf, sel, poivre, 100 g de fromage râpé.<br><br>
+                <strong>Préparation :</strong> Émincer les oignons et les faire revenir dans beurre+huile 15 min. Ajouter le bouillon et laisser mijoter 20 min. Verser dans des bols, saupoudrer de fromage et gratiner.<br><br>
+                <strong>Temps :</strong> Préparation 10 min, cuisson 35 min, total 45 min.<br><br>
+                <strong>Conseils :</strong> Servir immédiatement, idéal avec du pain grillé.
+            </span>
+        </div>
+    </div>
+
+    <!-- Catégorie Italienne -->
+    <div class="categorie" style="background-color: #FFF3E0;">
+        <h3>Cuisine Italienne</h3>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Quando_você_mora_numa_cidade_com_milhares_de_pizzarias_%2822132311531%29.jpg" alt="Pizza Margherita">
+            <h4><a href="#">Pizza Margherita</a></h4>
+            <p>Pizza classique avec mozzarella, basilic et sauce tomate maison.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> Pâte à pizza, 150 g de mozzarella, 3 tomates, basilic frais, huile d'olive, sel.<br><br>
+                <strong>Préparation :</strong> Étaler la pâte, ajouter sauce tomate, mozzarella et basilic. Cuire 12-15 min au four à 220°C.<br><br>
+                <strong>Temps :</strong> Préparation 10 min, cuisson 15 min, total 25 min.<br><br>
+                <strong>Conseils :</strong> Servir chaud, ajouter un filet d'huile d'olive.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://www.panzani.fr/_ipx/f_webp&q_80&s_1800x1202/https://backend.panzani.fr/app/uploads/2023/10/visuel-spaghetti-carbonara-unsmushed.png" alt="Pâtes Carbonara">
+            <h4><a href="#">Pâtes Carbonara</a></h4>
+            <p>Pâtes à la sauce crémeuse avec pancetta et Pecorino.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 400 g de spaghetti, 150 g de pancetta, 3 œufs, 50 g de Pecorino râpé, poivre.<br><br>
+                <strong>Préparation :</strong> Cuire les pâtes, mélanger œufs et fromage, ajouter pancetta dorée, mélanger hors du feu.<br><br>
+                <strong>Temps :</strong> Préparation 10 min, cuisson 10 min, total 20 min.<br><br>
+                <strong>Conseils :</strong> Servir immédiatement pour une sauce crémeuse.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://assets.afcdn.com/recipe/20200408/109520_w1024h1024c1cx1866cy2800cxt0cyt0cxb3732cyb5600.jpg" alt="Lasagnes">
+            <h4><a href="#">Lasagnes</a></h4>
+            <p>Lasagnes à la viande, sauce tomate et béchamel.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> Pâtes à lasagne, 400 g viande hachée, 500 ml sauce tomate, 50 g beurre, 50 g farine, 500 ml lait, sel, poivre.<br><br>
+                <strong>Préparation :</strong> Préparer béchamel, cuire viande, monter les couches, cuire 40 min au four 180°C.<br><br>
+                <strong>Temps :</strong> Préparation 20 min, cuisson 40 min, total 1h.<br><br>
+                <strong>Conseils :</strong> Servir chaud avec parmesan râpé.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://assets.afcdn.com/recipe/20171019/73517_w1024h1024c1cx3000cy2000cxt0cyt0cxb6000cyb4000.jpg" alt="Risotto aux Champignons">
+            <h4><a href="#">Risotto aux Champignons</a></h4>
+            <p>Risotto crémeux aux champignons frais et parmesan.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 300 g riz arborio, 200 g champignons, 1 oignon, 50 g parmesan, 50 g beurre, 1 L bouillon légumes, sel, poivre.<br><br>
+                <strong>Préparation :</strong> Faire revenir oignon et champignons, ajouter riz, verser bouillon progressivement, remuer jusqu'à cuisson. Ajouter beurre et parmesan.<br><br>
+                <strong>Temps :</strong> Préparation 10 min, cuisson 20 min, total 30 min.<br><br>
+                <strong>Conseils :</strong> Servir chaud, ajouter persil frais.
+            </span>
+        </div>
+    </div>
+
+    <!-- Catégorie Cuisine Asiatique -->
+    <div class="categorie" style="background-color: #E8F5E9;">
+        <h3>Cuisine Asiatique</h3>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://resize.elle.fr/original/var/plain_site/storage/images/elle-a-table/recettes-de-cuisine/sushis-et-makis-de-thon-et-saumon-920672/12002898-2-fre-FR/Sushis-et-makis-de-thon-et-saumon.jpg" alt="Sushi">
+            <h4><a href="#">Sushi</a></h4>
+            <p>Rouleaux de riz vinaigré accompagnés de poisson cru.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 200 g riz sushi, 200 g saumon, 1 avocat, nori, vinaigre de riz, sel, sucre.<br><br>
+                <strong>Préparation :</strong> Cuire riz, assaisonner, couper saumon et avocat, rouler avec nori, découper en bouchées.<br><br>
+                <strong>Temps :</strong> Préparation 20 min, cuisson 15 min, total 35 min.<br><br>
+                <strong>Conseils :</strong> Servir frais, avec sauce soja et wasabi.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuhZLwugJc_WnJm9Oir74D63awU0Jd21jQLw&s" alt="Pad Thaï">
+            <h4><a href="#">Pad Thaï</a></h4>
+            <p>Nouilles sautées aux crevettes, tofu et légumes.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 200 g nouilles de riz, 100 g crevettes, 50 g tofu, 1 carotte, 1 poivron, sauce soja, huile, cacahuètes.<br><br>
+                <strong>Préparation :</strong> Cuire nouilles, sauter légumes, tofu et crevettes, ajouter sauce, mélanger.<br><br>
+                <strong>Temps :</strong> Préparation 15 min, cuisson 10 min, total 25 min.<br><br>
+                <strong>Conseils :</strong> Servir chaud, parsemer de cacahuètes concassées.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://public-storage.qoqa.ch/21m5fb31qi3prjz595m7i2joeixm" alt="Soupe Pho">
+            <h4><a href="#">Soupe Pho</a></h4>
+            <p>Soupe vietnamienne à base de bouillon, nouilles et viande.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> 200 g nouilles de riz, 200 g bœuf, 1 oignon, 1 L bouillon, herbes fraîches, citron.<br><br>
+                <strong>Préparation :</strong> Cuire bouillon, ajouter viande et nouilles, garnir avec herbes et citron.<br><br>
+                <strong>Temps :</strong> Préparation 15 min, cuisson 20 min, total 35 min.<br><br>
+                <strong>Conseils :</strong> Servir chaud, avec sauce pimentée si souhaité.
+            </span>
+        </div>
+
+        <div class="recipe" onclick="showDetail(this)">
+            <img src="https://mariefoodtips.com/wp-content/uploads/2023/03/dim-sum.jpg" alt="Dim Sum">
+            <h4><a href="#">Dim Sum</a></h4>
+            <p>Petites bouchées vapeur garnies de viande ou légumes.</p>
+            <span class="recipe-full" style="display:none;">
+                <strong>Ingrédients :</strong> Pâte à dim sum, 100 g porc haché, 50 g crevettes, légumes hachés, sauce soja, huile.<br><br>
+                <strong>Préparation :</strong> Garnir pâte, former bouchées, cuire à la vapeur 10-12 min.<br><br>
+                <strong>Temps :</strong> Préparation 20 min, cuisson 12 min, total 32 min.<br><br>
+                <strong>Conseils :</strong> Servir avec sauce soja ou chili.
+            </span>
+        </div>
+    </div>
+
+</section>
+
+<section id="detailRecette" class="content-section" style="display:none; background-color:#fff8e1; padding:40px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+    <h2 id="detailTitle">Titre Recette</h2>
+    <img id="detailImage" src="" alt="Image Recette">
+    <p id="detailDescription">Description détaillée de la recette...</p>
+    <button onclick="backToRecettes()">← Retour aux recettes</button>
+</section>
+
+<footer>
+    <p>Contactez-moi à : <a href="mailto:contact@blogdecuisine.com">contact@blogdecuisine.com</a></p>
+</footer>
+
+<script>
+function showSection(sectionId){
+    document.querySelectorAll('.content-section').forEach(sec => sec.style.display='none');
+    document.getElementById(sectionId).style.display='block';
+}
+window.onload=function(){ showSection('accueil'); }
+
+function showDetail(element){
+    document.querySelectorAll('.content-section').forEach(sec => sec.style.display='none');
+    document.getElementById('detailTitle').innerText = element.querySelector('h4 a').innerText;
+    document.getElementById('detailImage').src = element.querySelector('img').src;
+    document.getElementById('detailImage').alt = element.querySelector('img').alt;
+    document.getElementById('detailDescription').innerHTML = element.querySelector('.recipe-full').innerHTML;
+    document.getElementById('detailRecette').style.display='block';
+}
+
+function backToRecettes(){
+    document.getElementById('detailRecette').style.display='none';
+    document.getElementById('recettes').style.display='block';
+}
+
+function searchRecipe(){
+    let input = document.getElementById('searchBar').value.toLowerCase();
+    document.querySelectorAll('.recipe').forEach(recipe=>{
+        let name=recipe.querySelector('h4 a').innerText.toLowerCase();
+        recipe.style.display=name.includes(input)?'inline-block':'none';
+    });
+}
+</script>
+
+</body>
+</html>
